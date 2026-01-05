@@ -10,15 +10,24 @@
 /* ------------------------------------------------------------ */
 
 body {
-  font-family: sans-serif;
+  font-family: var(--font-humanist);
   text-align: center;
+  color: var(--gray-8);
 }
 
 .container {
+  width: 100vw;
+  height: 100vh;
+  z-index: var(--layer-1);
+
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+
+  background-image: var(--gradient-29), var(--noise-4);
+  filter: var(--noise-filter-4);
+  background-size: cover;
 }
 
 .buttons {
@@ -26,27 +35,27 @@ body {
   justify-content: space-evenly;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-align: center;
-  margin: 0 auto;
-  padding: 2rem;
+#category-title {
+  font-weight: var(--font-weight-6);
+  font-size: var(--font-size-8);
 }
 
-p,
-button {
-  margin: var(--size-6);
+#output{
+  h1 {
+    font-weight: var(--font-weight-4);
+    font-size: var(--font-size-6);
+  }
+  height: 100;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  /* TODO add animation to changing enabled output */
+  > :not(.enabled) {
+    display: none;
+  }
 }
 
-body > picture,
-button {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  margin: 2rem;
+#input {
 }

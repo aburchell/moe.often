@@ -1,1 +1,10 @@
-pub mod counter_btn;
+pub mod logs;
+pub mod graph;
+pub mod options;
+pub mod categories;
+pub mod category_title;
+pub mod statistics;
+pub mod summary;
+pub mod input;
+pub mod output;
+pub mod onboarding;

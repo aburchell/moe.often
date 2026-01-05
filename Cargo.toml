@@ -12,6 +12,9 @@ leptos_router = { version = "0.8", features = ["nightly"] }
 console_log = "1"
 log = "0.4"
 console_error_panic_hook = "0.1"
+uuid = { version = "1.19.0", features = ["v4", "js"] }
+reactive_stores = "0.3.1"
+gloo = "0.11.0"
 
 # utils
 # strum = { version = "0.25", features = ["derive", "strum_macros"] }

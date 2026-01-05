@@ -1,4 +1,9 @@
-use crate::components::counter_btn::Button;
+use crate::components::{
+    category_title::Title,
+    input::Input,
+    output::Output,
+    onboarding::Onboarding,
+};
 use leptos::prelude::*;
 
 /// Default Home Page
@@ -7,9 +12,8 @@ pub fn Home() -> impl IntoView {
     view! {
         <ErrorBoundary fallback=|errors| {
             view! {
-                <h1>"Uh oh! Something went wrong!"</h1>
+                <h1>"ERROR"</h1>
 
-                <p>"Errors: "</p>
                 // Render a list of errors as strings - good for development purposes
                 <ul>
                     {move || {
@@ -25,27 +29,9 @@ pub fn Home() -> impl IntoView {
         }>
 
             <div class="container">
-
-                <picture>
-                    <source
-                        srcset="https://raw.githubusercontent.com/leptos-rs/leptos/main/docs/logos/Leptos_logo_pref_dark_RGB.svg"
-                        media="(prefers-color-scheme: dark)"
-                    />
-                    <img
-                        src="https://raw.githubusercontent.com/leptos-rs/leptos/main/docs/logos/Leptos_logo_RGB.svg"
-                        alt="Leptos Logo"
-                        height="200"
-                        width="400"
-                    />
-                </picture>
-
-                <h1>"Welcome to Leptos"</h1>
-
-                <div class="buttons">
-                    <Button />
-                    <Button increment=5 />
-                </div>
-
+                <Title />
+                <Output />
+                <Input />
             </div>
         </ErrorBoundary>
     }
