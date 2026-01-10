@@ -1,14 +1,16 @@
 use crate::components::{
-    category_title::Title,
-    input::Input,
-    output::Output,
-    onboarding::Onboarding,
+    category_title::Title, input::Input, onboarding::Onboarding, output::Output,
 };
+use crate::data::{State, StateStoreFields, UserLifecycleStage};
 use leptos::prelude::*;
+use reactive_stores::Store;
 
 /// Default Home Page
 #[component]
 pub fn Home() -> impl IntoView {
+    let state = expect_context::<Store<State>>();
+    let user_interaction_stage = state.interaction_stage();
+    let in_onboarding = move || user_interaction_stage.get() == UserLifecycleStage::Onboarding;
     view! {
         <ErrorBoundary fallback=|errors| {
             view! {
@@ -27,12 +29,16 @@ pub fn Home() -> impl IntoView {
                 </ul>
             }
         }>
-
-            <div class="container">
-                <Title />
-                <Output />
-                <Input />
-            </div>
+            <Show
+                when=move || { !in_onboarding() }
+                fallback=|| view! { <Onboarding/> }
+            >
+                <div class="container">
+                    <Title />
+                    <Output />
+                    <Input />
+                </div>
+            </Show>
         </ErrorBoundary>
     }
 }
