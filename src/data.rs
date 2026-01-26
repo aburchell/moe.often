@@ -63,6 +63,7 @@ pub struct State {
 pub enum UserLifecycleStage {
     #[default]
     Onboarding,
+    AddingCategoryModal,
     Regular,
 }
 

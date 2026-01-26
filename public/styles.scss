@@ -3,22 +3,31 @@
 /* the props */
 @import "https://unpkg.com/open-props";
 
-/* optional imports that use the props */
-@import "https://unpkg.com/open-props/normalize.min.css";
-/* @import "https://unpkg.com/open-props/buttons.min.css"; */
 
 /* ------------------------------------------------------------ */
 
 $text-color: var(--gray-8);
+$add-category-color: var(--violet-4);
+
+.hidden {
+  display: none;
+}
+
 body {
   font-family: var(--font-humanist);
   text-align: left;
   color: $text-color;
+
+  background-image: var(--gradient-29), var(--noise-4);
+  filter: var(--noise-filter-4);
+  background-size: cover;
+
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
 }
 
 .container {
-  width: 100vw;
-  height: 100vh;
   z-index: var(--layer-1);
 
   display: flex;
@@ -30,9 +39,26 @@ body {
   padding-left: 2rem;
   padding-top: 2rem;
 
-  background-image: var(--gradient-29), var(--noise-4);
-  filter: var(--noise-filter-4);
-  background-size: cover;
+}
+
+.modal {
+  width: 80vw;
+  height: 80vh;
+
+  position: fixed;
+  top: 10vh;
+  right: 10vw;
+
+  margin: auto;
+  padding: 1em;
+  border-radius: 4em;
+  border: 3px solid black;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  background-color: "red";
 }
 
 .buttons {
@@ -66,33 +92,36 @@ body {
 }
 
 #onboarding-container {
-  ul {
-    
-  }
-  li {
-    
-  }
+  ul { }
+  li { }
   #hint {
-    position: fixed;
-    bottom: 90px;
-    right: 160px;
     font-size: var(--font-size-3);
+  }
+  #add-category-button {
+    width: 100px;
+    max-height: 100px;
+    border-radius: 50%;
+
+    aspect-ratio: 1;
+    background-color: var(--violet-4) !important;
+    color: $text-color;
+
+    font-size: var(--font-size-9);
+    font-weight: var(--font-weight-9);
+  }
+  .row {
+    margin-left: auto;
+    margin-right: 1em;
   }
 }
 
-#add-category-button {
-  position: fixed;
-  right: 50px;
-  bottom: 50px;
+#add-category-modal {
+}
 
-  width: 100px;
-  max-height: 100px;
-  border-radius: 50%;
 
-  aspect-ratio: 1;
-  background-color: var(--violet-4) !important;
-  color: $text-color;
-
-  font-size: var(--font-size-9);
-  font-weight: var(--font-weight-9);
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1em;
 }

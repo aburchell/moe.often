@@ -1,7 +1,12 @@
+use crate::data::{State, StateStoreFields, UserLifecycleStage};
 use leptos::prelude::*;
+use reactive_stores::Store;
 
 #[component]
 pub fn Onboarding() -> impl IntoView {
+    let state = expect_context::<Store<State>>();
+    let ui_stage = state.interaction_stage();
+    let done_onboarding = move |_| ui_stage.set(UserLifecycleStage::AddingCategoryModal);
     view! {
         <div id="onboarding-container" class="container">
             <section>
@@ -36,8 +41,10 @@ pub fn Onboarding() -> impl IntoView {
                     <li>"A graph with all your data."</li>
                 </ul>
             </section>
-            <div id="hint">"Add a category to start keeping track of!"</div>
-            <button id="add-category-button" type="button">"+"</button>
+            <div class="row">
+                <div id="hint">"Add a category to start keeping track of!"</div>
+                <button id="add-category-button" type="button" on:click=done_onboarding>"+"</button>
+            </div>
         </div>
     }
 }

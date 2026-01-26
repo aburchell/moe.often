@@ -1,6 +1,5 @@
-use crate::components::{
-    category_title::Title, input::Input, onboarding::Onboarding, output::Output,
-};
+use crate::components::alternate_screen::AlternateScreen;
+use crate::components::{category_title::Title, input::Input, output::Output};
 use crate::data::{State, StateStoreFields, UserLifecycleStage};
 use leptos::prelude::*;
 use reactive_stores::Store;
@@ -10,7 +9,7 @@ use reactive_stores::Store;
 pub fn Home() -> impl IntoView {
     let state = expect_context::<Store<State>>();
     let user_interaction_stage = state.interaction_stage();
-    let in_onboarding = move || user_interaction_stage.get() == UserLifecycleStage::Onboarding;
+    let is_main_screen = move || user_interaction_stage.get() == UserLifecycleStage::Regular;
     view! {
         <ErrorBoundary fallback=|errors| {
             view! {
@@ -30,9 +29,8 @@ pub fn Home() -> impl IntoView {
             }
         }>
             <Show
-                when=move || { !in_onboarding() }
-                fallback=|| view! { <Onboarding/> }
-            >
+                when=move || { is_main_screen() }
+                fallback=|| view! { <AlternateScreen/> }>
                 <div class="container">
                     <Title />
                     <Output />
